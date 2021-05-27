@@ -26,9 +26,12 @@ public class MainActivity extends BaseActivity implements MainInterface{
 
             }
         });
-
+        showList();
         Coureur coureur = new Coureur("julian", 28);
         showBaseError();
+    }
+
+    private void showList() {
     }
 
     @Override
