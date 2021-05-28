@@ -2,7 +2,7 @@ package com.example.projetmobile;
 
 import java.util.List;
 
-abstract public class RestCoureurResponse {
+public class RestCoureurResponse {
     private Integer count;
     private String next;
     private List<Coureur> results;
@@ -11,7 +11,7 @@ abstract public class RestCoureurResponse {
         return count;
     }
 
-    public String getNext() {
+    public String getNext(){
         return next;
     }
 

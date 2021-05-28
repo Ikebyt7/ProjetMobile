@@ -1,17 +1,16 @@
-[
-  {
-    "name": "Julian Alaphilippe",
-    "imgUrl": "lien",
-    "age": 28
-  },
-  {
-    "name": "David Gaudu",
-    "imgUrl": "lien",
-    "age": 24
-  },
-  {
-    "name": "Thibaut Pinot",
-    "imgUrl": "lien",
-    "age": 30
-  }
-]
+{
+  "results": [
+    {
+      "name": "Julian Alaphilippe",
+      "age": 28
+    },
+    {
+      "name": "David Gaudu",
+      "age": 24
+    },
+    {
+      "name": "Thibaut Pinot",
+      "age": 30
+    }
+  ]
+}
