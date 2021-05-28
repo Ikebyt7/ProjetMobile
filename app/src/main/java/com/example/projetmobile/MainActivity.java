@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -24,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity{
 
-    private static final String BASE_URL = "https://pokeapi.co/";
+    private static final String BASE_URL = "https://ikebyt7.github.io/";
 
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
@@ -52,14 +49,14 @@ public class MainActivity extends AppCompatActivity{
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
 
-            PokeApi pokeApi = retrofit.create(PokeApi.class);
+            CoureurApi coureurApi = retrofit.create(CoureurApi.class);
 
-            Call<RestPokemonResponse> call = pokeApi.getPokemonResponse();
-            call.enqueue(new Callback<RestPokemonResponse>() {
+            Call<RestCoureurResponse> call = coureurApi.getCoureurResponse();
+            call.enqueue(new Callback<RestCoureurResponse>() {
                 @Override
-                public void onResponse(Call<RestPokemonResponse> call, Response<RestPokemonResponse> response) {
+                public void onResponse(Call<RestCoureurResponse> call, Response<RestCoureurResponse> response) {
                     if(response.isSuccessful() && response.body() != null){
-                        List<Pokemon> pokemonList = response.body().getResults();
+                        List<Coureur> coureurList = response.body().getResults();
                         Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
                     } else {
                         showError();
@@ -67,7 +64,7 @@ public class MainActivity extends AppCompatActivity{
                 }
 
                 @Override
-                public void onFailure(Call<RestPokemonResponse> call, Throwable t) {
+                public void onFailure(Call<RestCoureurResponse> call, Throwable t) {
                         showError();
                 }
             });

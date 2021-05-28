@@ -1,6 +1,6 @@
 package com.example.projetmobile;
 
-public class Pokemon {
+public class Coureur {
     private String name;
     private String url;
 

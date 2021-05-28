@@ -2,11 +2,10 @@ package com.example.projetmobile;
 
 import java.util.List;
 
-public class RestPokemonResponse {
-
+abstract public class RestCoureurResponse {
     private Integer count;
     private String next;
-    private List<Pokemon> results;
+    private List<Coureur> results;
 
     public Integer getCount() {
         return count;
@@ -16,7 +15,7 @@ public class RestPokemonResponse {
         return next;
     }
 
-    public List<Pokemon> getResults() {
+    public List<Coureur> getResults() {
         return results;
     }
 }
