@@ -2,13 +2,13 @@ package com.example.projetmobile;
 
 public class Coureur {
     private String name;
-    private Integer age;
+    private String age;
 
     public String getName() {
         return name;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 }

@@ -19,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private static final String BASE_URL = "https://ikebyt7.github.io/";
 
@@ -32,63 +32,54 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        showList();
         makeApiCall();
 
     }
 
-
-
-        private void makeApiCall(){
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
-
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .build();
-
-            CoureurApi coureurApi = retrofit.create(CoureurApi.class);
-
-            Call<RestCoureurResponse> call = coureurApi.getCoureurResponse();
-            call.enqueue(new Callback<RestCoureurResponse>() {
-                @Override
-                public void onResponse(Call<RestCoureurResponse> call, Response<RestCoureurResponse> response) {
-                    if(response.isSuccessful() && response.body() != null){
-                        List<Coureur> coureurList = response.body().getResults();
-                        Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
-                    } else {
-                        showError();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<RestCoureurResponse> call, Throwable t) {
-                        showError();
-                }
-            });
-        };
-
-
-    public void showList() {
+    public void showList(List<Coureur> coureurList) {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }
-
-        // define an adapter
-        mAdapter = new ListAdapter(input);
+        mAdapter = new ListAdapter(coureurList);
         recyclerView.setAdapter(mAdapter);
     }
-    
+
+    private void makeApiCall() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        CoureurApi coureurApi = retrofit.create(CoureurApi.class);
+
+        Call<RestCoureurResponse> call = coureurApi.getCoureurResponse();
+        call.enqueue(new Callback<RestCoureurResponse>() {
+            @Override
+            public void onResponse(Call<RestCoureurResponse> call, Response<RestCoureurResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Coureur> coureurList = response.body().getResults();
+                    showList(coureurList);
+                } else {
+                    showError();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestCoureurResponse> call, Throwable t) {
+                showError();
+            }
+        });
+    }
+
+    ;
+
+
     public void showLoader() {
 
     }
