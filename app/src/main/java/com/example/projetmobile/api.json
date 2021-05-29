@@ -1,16 +1,23 @@
 {
+  "count": 4,
   "results": [
     {
       "name": "Julian Alaphilippe",
-      "age": 28
+      "nationalite": "FR",
+      "age": "28",
+      "equipe": "Deceuninck Quick Step"
     },
     {
       "name": "David Gaudu",
-      "age": 24
+      "age": "24",
+      "equipe": "Groupama FDJ",
+      "nationalite": "FR"
     },
     {
       "name": "Thibaut Pinot",
-      "age": 30
+      "age": "30",
+      "equipe": "Groupama FDJ",
+      "nationalite": "FR"
     }
   ]
 }
